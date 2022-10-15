@@ -18,7 +18,7 @@
         margin: 20px 0 30px 0;
       "
     >
-      MercuryStart
+      AuyuHorizon
     </h3>
     <h3
       v-else
@@ -30,7 +30,7 @@
         margin: 20px 0 30px 0;
       "
     >
-      M
+      A
     </h3>
     <div v-for="(item, idx) of routerList" :key="'menu' + idx">
       <el-sub-menu :index="item.path" v-if="item.title === 'menu'">
