@@ -16,6 +16,7 @@
         <fold v-if="changeIcon"> </fold>
         <expand v-else></expand>
       </el-icon>
+      <span style="margin-left: 10px;"> AD Security Intrusion Detection System</span>
     </div>
 
     <span style="text-align: right; margin-right: 10px">

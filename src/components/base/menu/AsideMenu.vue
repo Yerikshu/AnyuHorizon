@@ -22,8 +22,7 @@
     </h3>
     <h3
       v-else
-      style="
-        font-size: 20px;
+      style="font-size: 20px;
         color: white;
         font-weight: 650;
         text-align: center;
@@ -33,7 +32,7 @@
       A
     </h3>
     <div v-for="(item, idx) of routerList" :key="'menu' + idx">
-      <el-sub-menu :index="item.path" v-if="item.title === 'menu'">
+      <el-sub-menu :index="item.path" v-if="item.title === 'alarm'">
         <template #title>
           <svg
             t="1665414510738"
@@ -52,16 +51,9 @@
             ></path>
           </svg>
           <span v-if="!isCollapse" style="margin-left: 5px; color: white"
-            >首页</span
+            >告警汇总</span
           >
         </template>
-        <el-menu-item
-          v-for="(cItem, cIdx) of item.children"
-          :key="'subMenu' + cIdx"
-          :index="cItem.path"
-        >
-          <span style="color: white">{{ cItem.title }}</span>
-        </el-menu-item>
       </el-sub-menu>
     </div>
   </el-menu>
@@ -79,14 +71,8 @@ emitter.on("collapse", () => {
 
 const routerList = reactive([
   {
-    title: "menu",
-    path: "/home",
-    children: [
-      {
-        title: "控制台",
-        path: "/home/console",
-      },
-    ],
+    title: "alarm",
+    path: "/alarm",
   },
 ]);
 

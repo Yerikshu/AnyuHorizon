@@ -11,20 +11,11 @@ const router = createRouter({
     //   },
     // },
     {
-      path: "/",
-      redirect: "/home/console",
-      component: () => import("/src/components/base/layout/AsideLayout.vue"),
+      path: "/alarm",
+      component: () => import("/src/views/home/Alarm.vue"),
       meta: {
-        title: "首页",
-      },
-      children: [
-        {
-          path: "/home/console",
-          component: () => import("/src/views/home/ConsoleView.vue"),
-          name: "console",
-          meta: { title: "控制台", icon: "el-icon-s-home", affix: true },
-        },
-      ],
+        title: "告警汇总",
+      }
     },
     // {
     //   path: "/about",
