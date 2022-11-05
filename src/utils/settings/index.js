@@ -1,0 +1,1 @@
+ALARM_QUERY = "/invasion/list"
