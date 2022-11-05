@@ -24,5 +24,6 @@ const config = ref({
     pageSize: 10,
     filter: [],
   },
+  columns:[]
 });
 </script>

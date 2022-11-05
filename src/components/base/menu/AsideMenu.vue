@@ -22,7 +22,8 @@
     </h3>
     <h3
       v-else
-      style="font-size: 20px;
+      style="
+        font-size: 20px;
         color: white;
         font-weight: 650;
         text-align: center;
@@ -73,6 +74,24 @@ const routerList = reactive([
   {
     title: "alarm",
     path: "/alarm",
+  },
+  {
+    title: "setting",
+    path: "/settins",
+    children: [
+      {
+        title: "setting/system",
+        path: "/setting/system",
+      },
+      {
+        title: "setting/scan",
+        path: "/setting/scan",
+      },
+      {
+        title: "setting/exclusion",
+        path: "/setting/exclusion",
+      },
+    ],
   },
 ]);
 
