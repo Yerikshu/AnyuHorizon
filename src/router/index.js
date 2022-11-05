@@ -12,19 +12,41 @@ const router = createRouter({
     // },
     {
       path: "/alarm",
-      component: () => import("/src/views/home/Alarm.vue"),
+      component: () => import("/src/views/AlarmView.vue"),
       meta: {
         title: "告警汇总",
-      }
+      },
     },
-    // {
-    //   path: "/about",
-    //   name: "about",
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import("../views/AboutView.vue"),
-    // },
+    {
+      path: "/settings",
+      component: () => import("/src/components/base/layout/AsideLayout.vue"),
+      meta: {
+        title: "配置管理",
+      },
+      children: [
+        {
+          path: "/setting/system",
+          meta: {
+            title: "系统配置",
+          },
+          component: () => import("/src/views/settings/SystemView.vue"),
+        },
+        {
+          path: "/setting/scan",
+          meta: {
+            title: "探测配置",
+          },
+          component: () => import("/src/views/settings/ScanView.vue"),
+        },
+        {
+          path: "/setting/exclusion",
+          meta: {
+            title: "白名单配置",
+          },
+          component: () => import("/src/views/settings/ExclusionView.vue"),
+        },
+      ],
+    },
     {
       path: "/404",
       name: 404,
