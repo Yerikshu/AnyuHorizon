@@ -133,7 +133,7 @@ import { ElMessage } from "element-plus";
 
 let table = ref();
 
-let loading = reactive(false);
+let loading = ref(false);
 let initConfig = reactive({
   withHeaderSlot: false,
   loadingText: "数据载入中",
@@ -196,16 +196,17 @@ const props = defineProps({
 let finalConfig = computed({
   get() {
     let tmpConfig = Object.assign(initConfig, props.config);
-    if (tmpConfig.immediateRemote) {
-      updateTable();
-    }
-    console.log(tmpConfig);
+
     return tmpConfig;
   },
   set(value) {
     emit("update:config", value);
   },
 });
+
+if (finalConfig.value.immediateRemote) {
+  updateTable();
+}
 
 const handleSelect = (selection, row) => {
   emit("handleSelect", selection, row);
@@ -355,34 +356,33 @@ function setScrollLeft(left) {
 
 function updateTable() {
   if (finalConfig.value.tableDataUrl && finalConfig.value.remote) {
-    loading = true;
+    loading.value = true;
     apiPost(finalConfig.value.tableDataUrl, finalConfig.value.queryForm)
       .then((res) => {
-        loading = false;
+        loading.value = false;
         if (res.status === 200) {
           if (finalConfig.value.dataKey) {
-            finalConfig.value.tableData =
-              res.data.data[finalConfig.value.dataKey];
+            finalConfig.value.tableData = res.data[finalConfig.value.dataKey];
           } else {
             finalConfig.value.tableData = res.data.data;
           }
           if (finalConfig.value.pageTotalKey) {
             finalConfig.value.pageTotal =
-              res.data.data[finalConfig.value.pageTotalKey];
+              res.data[finalConfig.value.pageTotalKey];
           } else {
-            finalConfig.value.pageTotal = res.data.data.total;
+            finalConfig.value.pageTotal = res.data.total;
           }
           if (finalConfig.value.pageSizeKey) {
             finalConfig.value.pageSize =
-              res.data.data[finalConfig.value.pageSizeKey];
+              res.data[finalConfig.value.pageSizeKey];
           } else {
-            finalConfig.value.pageSize = res.data.data.pageSize;
+            finalConfig.value.pageSize = res.data.pageSize;
           }
           if (finalConfig.value.currentPageKey) {
             finalConfig.value.currentPage =
-              res.data.data[finalConfig.value.currentPageKey];
+              res.data[finalConfig.value.currentPageKey];
           } else {
-            finalConfig.value.currentPage = res.data.data.currentPage;
+            finalConfig.value.currentPage = res.data.currentPage;
           }
         } else {
           if (res.data.data) {
@@ -391,7 +391,7 @@ function updateTable() {
         }
       })
       .catch(() => {
-        loading = false;
+        loading.value = false;
         ElMessage.warning("获取数据异常");
       });
   }

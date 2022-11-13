@@ -15,7 +15,6 @@ const service = axios.create({
 
 service.interceptors.request.use(
   (config) => {
-    // ...
     return config;
   },
   (error) => {
@@ -27,10 +26,9 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   (response) => {
     if (response.status === 200) {
-      redirect();
-    } else {
-      return response;
-    }
+      return response
+      // redirect();
+    } 
   },
   () => {
     return Promise.reject();

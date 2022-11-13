@@ -12,10 +12,20 @@ const router = createRouter({
     // },
     {
       path: "/alarm",
-      component: () => import("/src/views/AlarmView.vue"),
+      redirect: "/alarm/index",
+      component: () => import("/src/components/base/layout/AsideLayout.vue"),
       meta: {
         title: "告警汇总",
       },
+      children: [
+        {
+          path: "/alarm/index",
+          meta: {
+            title: "告警汇总",
+          },
+          component: () => import("/src/views/AlarmView.vue"),
+        },
+      ]
     },
     {
       path: "/settings",

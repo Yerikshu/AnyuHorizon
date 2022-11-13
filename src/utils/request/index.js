@@ -1,9 +1,11 @@
-import axios from "axios";
+// import axios from "axios";
 import request from "./config";
+import { settings } from "../network/network";
 
 export const apiPost = (url, data) => {
+  let new_url = settings.BASE_URL + url;
   return request({
-    url: url,
+    url: new_url,
     method: "post",
     data: data,
   });
