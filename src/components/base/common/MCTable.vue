@@ -184,6 +184,7 @@ let initConfig = reactive({
   pageSizeKey: "",
   currentPageKey: "",
   immediateRemote: false,
+  withPagination: true,
 });
 
 const props = defineProps({

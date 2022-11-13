@@ -1,6 +1,6 @@
 <template>
-    <AlarmTable />
+  <AlarmTable />
 </template>
 <script setup>
-import AlarmTable from "../components/business/AlarmTable.vue";
+import AlarmTable from "@/components/business/alarm/AlarmTable.vue";
 </script>

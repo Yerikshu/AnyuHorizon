@@ -33,7 +33,7 @@
       A
     </h3>
     <div v-for="(item, idx) of routerList" :key="'menu' + idx">
-      <el-sub-menu :index="item.path" v-if="item.title === 'alarm'">
+      <el-menu-item :index="item.path" v-if="item.title === 'alarm'">
         <template #title>
           <svg
             t="1665414510738"
@@ -53,6 +53,29 @@
           </svg>
           <span v-if="!isCollapse" style="margin-left: 5px; color: white"
             >告警汇总</span
+          >
+        </template>
+      </el-menu-item>
+      <el-sub-menu :index="item.path" v-if="item.title === 'settings'">
+        <template #title>
+          <svg
+            t="1665414510738"
+            class="icon"
+            viewBox="0 0 1024 1024"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            p-id="3107"
+            width="16"
+            height="16"
+          >
+            <path
+              d="M944.38 70.19h-864c-44.19 0-80 35.81-80 80v571.43c0 44.19 35.81 80 80 80h864c44.18 0 80-35.81 80-80V150.19c0-44.19-35.82-80-80-80z m5.45 603.45c0 26.26-21.29 47.55-47.55 47.55H750.12V445.41c0-26.26-21.28-47.55-47.55-47.55-26.26 0-47.55 21.29-47.55 47.55v275.78h-95.1V350.31c0-26.26-21.28-47.55-47.55-47.55-26.26 0-47.55 21.29-47.55 47.55v370.88h-95.1v-199.7c0-26.26-21.28-47.55-47.55-47.55-26.26 0-47.55 21.28-47.55 47.55v199.7H122.49c-26.26 0-47.55-21.29-47.55-47.55V198.16c0-26.26 21.29-47.55 47.55-47.55h779.79c26.26 0 47.55 21.29 47.55 47.55v475.48zM722.67 874.76H302.09c-25.25 0-45.71 20.47-45.71 45.71 0 25.25 20.47 45.71 45.71 45.71h420.58c25.24 0 45.71-20.46 45.71-45.71 0-25.24-20.47-45.71-45.71-45.71z m0 0"
+              fill="#ffffff"
+              p-id="3108"
+            ></path>
+          </svg>
+          <span v-if="!isCollapse" style="margin-left: 5px; color: white"
+            >系统设置</span
           >
         </template>
       </el-sub-menu>
@@ -76,20 +99,20 @@ const routerList = reactive([
     path: "/alarm",
   },
   {
-    title: "setting",
-    path: "/settins",
+    title: "settings",
+    path: "/settings",
     children: [
       {
-        title: "setting/system",
-        path: "/setting/system",
+        title: "settings/system",
+        path: "/settings/system",
       },
       {
-        title: "setting/scan",
-        path: "/setting/scan",
+        title: "settings/scan",
+        path: "/settings/scan",
       },
       {
-        title: "setting/exclusion",
-        path: "/setting/exclusion",
+        title: "settings/exclusion",
+        path: "/settings/exclusion",
       },
     ],
   },

@@ -1,7 +1,9 @@
 <template>
   <MCTable v-model:config="config" ref="table">
-    <template #OperateButton>
-      <el-button link type="primary" @click="showDetail">详情</el-button>
+    <template #OperateButton="{ data }">
+      <el-button link type="primary" @click="showDetail(data.activity_list)"
+        >详情</el-button
+      >
       <el-button link type="primary" @click="showDetail">已处理</el-button>
       <el-button link type="primary" @click="showDetail">忽略</el-button>
       <el-button link type="primary" @click="showDetail">关闭</el-button>
@@ -9,17 +11,21 @@
       <el-button link type="primary" @click="showDetail">删除</el-button>
     </template>
   </MCTable>
+  <AlaramDetailDrawer ref="drawer"/>
 </template>
 
 <script setup>
 import { ref } from "vue";
-import MCTable from "/src/components/base/common/MCTable.vue";
-import { settings } from "/src/utils/network/index";
+import AlaramDetailDrawer from "./AlaramDetailDrawer.vue";
+import MCTable from "@/components/base/common/MCTable.vue";
+import { settings } from "@/utils/network/index";
 
+const drawer = ref()
 const config = ref({
   remote: true,
   tableDataUrl: settings.GET_INVASION_LIST,
   showOperateButton: true,
+  operateButtonWidth: 350,
   queryForm: {
     pageNo: 1,
     pageSize: 10,
@@ -29,6 +35,7 @@ const config = ref({
     {
       label: "标题",
       key: "title",
+      showOverflowTooltip: true,
     },
     {
       label: "级别",
@@ -55,6 +62,6 @@ const config = ref({
 });
 
 function showDetail(val) {
-  console.log(val);
+  drawer.value.openDrawer(val)
 }
 </script>
