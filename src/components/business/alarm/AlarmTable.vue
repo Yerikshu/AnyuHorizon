@@ -11,7 +11,7 @@
       <el-button link type="primary" @click="showDetail">删除</el-button>
     </template>
   </MCTable>
-  <AlaramDetailDrawer ref="drawer"/>
+  <AlaramDetailDrawer ref="drawer" />
 </template>
 
 <script setup>
@@ -19,8 +19,9 @@ import { ref } from "vue";
 import AlaramDetailDrawer from "./AlaramDetailDrawer.vue";
 import MCTable from "@/components/base/common/MCTable.vue";
 import { settings } from "@/utils/network/index";
+import moment from 'moment'
 
-const drawer = ref()
+const drawer = ref();
 const config = ref({
   remote: true,
   tableDataUrl: settings.GET_INVASION_LIST,
@@ -52,16 +53,26 @@ const config = ref({
     {
       label: "开始时间",
       key: "start_time",
+      width: 160,
+      formatter: (data) => {
+        let date = data.start_time;
+        return moment(date).format("YYYY-MM-DD HH:mm:ss")
+      },
     },
     {
       label: "结束时间",
       key: "end_time",
+      width: 160,
+      formatter: (data) => {
+        let date = data.end_time;
+        return moment(date).format("YYYY-MM-DD HH:mm:ss")
+      },
     },
   ],
   immediateRemote: true,
 });
 
 function showDetail(val) {
-  drawer.value.openDrawer(val)
+  drawer.value.openDrawer(val);
 }
 </script>

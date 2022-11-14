@@ -11,7 +11,7 @@ const router = createRouter({
     //   },
     // },
     {
-      path: "/alarm",
+      path: "/",
       redirect: "/alarm/index",
       component: () => import("/src/components/base/layout/AsideLayout.vue"),
       meta: {
