@@ -75,9 +75,16 @@
             ></path>
           </svg>
           <span v-if="!isCollapse" style="margin-left: 5px; color: white"
-            >系统设置</span
+            >配置管理</span
           >
         </template>
+        <el-menu-item
+          v-for="(cItem, cIdx) of item.children"
+          :key="'subMenu' + cIdx"
+          :index="cItem.path"
+        >
+          <span style="color: white">{{ cItem.title }}</span>
+        </el-menu-item>
       </el-sub-menu>
     </div>
   </el-menu>
@@ -103,15 +110,15 @@ const routerList = reactive([
     path: "/settings",
     children: [
       {
-        title: "settings/system",
+        title: "系统配置",
         path: "/settings/system",
       },
       {
-        title: "settings/scan",
+        title: "探测配置",
         path: "/settings/scan",
       },
       {
-        title: "settings/exclusion",
+        title: "白名单配置",
         path: "/settings/exclusion",
       },
     ],
