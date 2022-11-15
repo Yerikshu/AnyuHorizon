@@ -7,11 +7,15 @@
   >
     <el-table :data="tableData">
       <el-table-column prop="title" label="标题" />
-      <el-table-column prop="alert_code" label="告警代码" width="80"/>
-      <el-table-column prop="classify" label="告警类型" width="80"/>
-      <el-table-column prop="dc_computer_name" label="告警主机" show-overflow-tooltip/>
+      <el-table-column prop="alert_code" label="告警代码" width="80" />
+      <el-table-column prop="classify" label="告警类型" width="80" />
+      <el-table-column
+        prop="dc_computer_name"
+        label="告警主机"
+        show-overflow-tooltip
+      />
       <el-table-column prop="description" label="描述" show-overflow-tooltip />
-      <el-table-column prop="repeat_count" label="重复次数" width="80"/>
+      <el-table-column prop="repeat_count" label="重复次数" width="80" />
       <el-table-column
         prop="start_time"
         label="开始时间"
